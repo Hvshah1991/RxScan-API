@@ -41,17 +41,18 @@ router.post('/', async (req, res) => {
                     labels.map(async (label) => {
                     const rxTermsResponse = await axios.get('https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search', {
                         params: {
-                        terms: label.description,
-                        maxList: 1, // You can adjust this value based on your needs
-                        ef: 'STRENGTHS_AND_FORMS,RXCUIS',
+                        terms: label.description, // The search string (e.g., just a part of a word) for which to find matches in the list
+                        maxList: 1, //the number of results want to request
+                        ef: 'DISPLAY_NAME,STRENGTHS_AND_FORMS,RXCUIS', // A comma-separated list of additional fields to be returned for each retrieved list item
                         },
                     });
+
                     return rxTermsResponse.data;
                     })
                 );
 
 
-                // Send both labels and RxTerms API response as a single response
+                // Sending both labels and RxTerms API response as a single response
                 res.send({
                     labels,
                     rxTermsResults,
