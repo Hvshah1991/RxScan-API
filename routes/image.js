@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const { ImageAnnotatorClient } = require('@google-cloud/vision');
 const axios = require('axios');
 
-
 // setting maximum payload size limit
 router.use(bodyParser.json({ limit: '50mb' }));
 router.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
