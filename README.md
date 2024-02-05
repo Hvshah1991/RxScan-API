@@ -19,6 +19,7 @@ the medicine usage.
 * @google-cloud/vision
 * axios
 * cors
+* bodyParser
 * dotenv
 * express
 * nodemon
